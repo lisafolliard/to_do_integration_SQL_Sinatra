@@ -1,0 +1,17 @@
+<h1>To Do List</h1>
+<form id="" action="/" method="post">
+  <div id="" class='form-group'>
+    <label for="to_do">Enter your task</label>
+    <input type="text" name="to_do" class='form-control' value="">
+
+  </div>
+  <button name="">Send</button>
+
+</form>
+<h2>Remaining tasks</h2
+<ul>
+  <% Task.all.each do |task| %>
+    <li><%= task.description %></li>
+  <% end %>
+</ul>
+<a href='/'>Clear</a>
