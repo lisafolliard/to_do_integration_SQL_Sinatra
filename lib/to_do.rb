@@ -10,7 +10,7 @@ class Task
   end
 
   def self.all
-    @@all_tasks.description
+    @@all_tasks
   end
 
   def save
