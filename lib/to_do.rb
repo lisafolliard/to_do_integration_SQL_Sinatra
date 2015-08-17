@@ -1,23 +1,39 @@
 class Task
-  @@all_tasks = []
+  attr_reader(:description, :list_id, :due_date)
 
-  def initialize(description)
-    @description = description
+  define_method(:initialize) do |attributes|
+    @description = attributes.fetch(:description)
+    @list_id = attributes.fetch(:list_id)
+    @due_date = attributes.fetch(:due_date)
+
   end
 
-  def description
-    @description
+  # define_method(:description) do
+  #   @description
+  # end
+
+  define_singleton_method(:all) do
+    returned_tasks = DB.exec('SELECT * FROM tasks;')
+    tasks = []
+    returned_tasks.each() do |task|
+      description = task.fetch("description")
+      list_id = task.fetch("list_id").to_i()
+      due_date = task.fetch("due_date")
+      tasks.push(Task.new({:description => description, :list_id => list_id, :due_date => due_date}))
+    end
+    tasks
   end
 
-  def self.all
-    @@all_tasks
+  define_method(:save) do
+    DB.exec("INSERT INTO tasks (description, list_id, due_date) VALUES ('#{@description}', #{@list_id}, '#{@due_date}');")
   end
 
-  def save
-    @@all_tasks.push(self)
-  end
-
-  def self.clear
+  define_singleton_method(:clear) do
     @@all_tasks = []
   end
+
+  define_method(:==) do |another_task|
+    self.description().==(another_task.description())
+  end
+
  end
