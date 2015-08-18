@@ -1,0 +1,7 @@
+<h1><%= @lists.name() %></h1>
+
+ <ul>
+    <% @lists.tasks().each() do |task| %>
+      <li><%= task.description() %> - due <%= task.due() %></li>
+    <% end %>
+</ul>

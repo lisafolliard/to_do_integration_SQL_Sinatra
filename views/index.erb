@@ -1,17 +1,13 @@
-<h1>To Do List</h1>
-<form id="" action="/" method="post">
-  <div id="" class='form-group'>
-    <label for="to_do">Enter your task</label>
-    <input type="text" name="to_do" class='form-control' value="">
+<h1>Welcome to Your List Maker</h1>
 
-  </div>
-  <button name="">Send</button>
+<div class="container">
 
-</form>
-<h2>Remaining tasks</h2
-<ul>
-  <% Task.all.each do |task| %>
-    <li><%= task.description %></li>
-  <% end %>
-</ul>
-<a href='/'>Clear</a>
+  <ol>
+    <% @lists.each() do |list| %>
+      <li><a href='/lists/<%= list.id() %>'><%= list.name() %></a></li>
+    <% end %>
+  </ol>
+
+
+  <a href="/lists/new" name="Add a New List">Add a New List</a>
+</div>

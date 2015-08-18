@@ -1,0 +1,10 @@
+FOR INDEX PAGE
+
+<!-- <ol>
+  <% @lists.each() do |list| %>
+    <li><a href='/list/:id<%= list.id() %>'><%= list.name() %></a></li>
+  <% end %>
+</ol> -->
+
+
+<!-- <a href="/lists">View All Lists</a> -->

@@ -26,4 +26,14 @@ class List
     self.name().==(another_list.name()).&(self.id().==(another_list.id()))
   end
 
+  define_singleton_method(:find) do |id|
+    found_list = nil
+    List.all().each() do |list|
+      if list.id().==(id)
+        found_list = list
+      end
+    end
+    found_list
+  end
+
 end
