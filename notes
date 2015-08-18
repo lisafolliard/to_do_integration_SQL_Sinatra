@@ -8,3 +8,10 @@ FOR INDEX PAGE
 
 
 <!-- <a href="/lists">View All Lists</a> -->
+
+
+<ul>
+   <% @lists.tasks().each() do |task| %>
+     <li><%= task.description() %></li>
+   <% end %>
+</ul>

@@ -17,7 +17,7 @@ describe('view details for single list', {:type => :feature}) do
   it('allows a user to click a list and see task details') do
     test_list = List.new({:name => "Grocery List", :id => nil})
     test_list.save()
-    test_task = Task.new({:description => "apples", :list_id => test_list.id(), :due_date => '2015-08-16 00:00:00'})
+    test_task = Task.new({:description => "apples", :list_id => test_list.id()})
     test_task.save()
     visit('/')
     click_link(test_list.name())
