@@ -28,3 +28,10 @@ get('/lists/:id') do
   # @tasks = Task.all()
   erb(:list)
 end
+
+post('lists/:id') do
+  task = params.fetch('task')
+  new_task = Task.new({:description => description, :list_id => list_id, :due_date => due_date})
+  new_task.save()
+  erb(:success)
+end  
