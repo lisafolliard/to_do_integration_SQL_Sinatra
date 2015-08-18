@@ -1,5 +1,6 @@
-<form action='/lists/:id' method = 'post'>
+<form action='/tasks' method = 'post'>
 
+<input id="list_id" name="list_id" type="hidden" value="<%= @list.id() %>">
 
   <div class='form-group'>
     <label for='task'>Add a new task</label>

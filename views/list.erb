@@ -15,6 +15,16 @@
 
   <% end %>
 
-  <div class="container">
-    <a href="/tasks/new" name="Add a New Task">Add a New Task</a>
+  
+
+<form action='/tasks' method ='post'>
+
+<input id="list_id" name="list_id" type="hidden" value="<%= @list.id() %>">
+
+  <div class='form-group'>
+    <label for='task'>Add a new task</label>
+    <input id='task' name='task' type='text' class='form-control'>
+
+  <button type="submit" class="btn btn-warning">Add Task</button>
   </div>
+</form>

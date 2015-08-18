@@ -4,6 +4,7 @@ require 'sinatra/reloader'
 require 'sinatra'
 also_reload '../lib/**/*.rb'
 require 'pg'
+require 'pry'
 
 DB = PG.connect({:dbname => "to_do_test"})
 
@@ -29,13 +30,15 @@ get('/lists/:id') do
 end
 
 get('/tasks/new') do
+  list_id = params.fetch("id").to_i()
+  @list = List.find(list_id)
   erb(:task_form)
 end
 
-post('/lists/:id') do
+post('/tasks') do
   task = params.fetch('task')
   list_id = params.fetch("list_id").to_i()
-  @list = List.find(list_id)
+  # @list = List.find(list_id)
   @task = Task.new({:description => task, :list_id => list_id})
   @task.save()
   erb(:success)
